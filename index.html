@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>Direct Illumination Demo</title>
+		<link rel="stylesheet" type="text/css" href="styles.css">
+	</head>
+	<body>
+        <div id="title" class="title">
+			Direct Illumination Demo
+		</div>
+        <div class="container">
+            <div id="renderCanvas" class="render">
+            </div>
+            <div id="overallMenu" class="menu" style="text-align: center;">
+                <div id="lightDirectionMenuLabel" class="submenu_label" style="text-align: left;">
+					Light Properties
+				</div>
+				<div id="lightDirectionMenu" class="submenu" style="text-align: left;">
+					<div class="submenu_item">
+						<label for="lightDirectionThetaSlider">Light Direction (θ):</label>
+						<input type="range" class="custom_slider" id="lightDirectionThetaSlider" min="0" max="359" step="1" value="45">
+						<input type="text" id="lightDirectionThetaValue" value="45" readonly>
+					</div>
+					<div class="submenu_item">
+						<label for="lightDirectionPhiSlider">Light Direction (φ):</label>
+						<input type="range" class="custom_slider" id="lightDirectionPhiSlider" min="0" max="90" step="1" value="75">
+						<input type="text" id="lightDirectionPhiValue" value="75" readonly>
+					</div>
+					<br>
+					<div class="submenu_item">
+						<label for="colorpick_lightColor">Light Color:</label>
+						<input type='color' id="colorpick_lightColor"  class="colorpicker" value="#FFFFFF">
+					</div>
+				</div>
+
+				<div id="materialPropertiesMenuLabel" class="submenu_label" style="text-align: left;">
+					Material Properties
+				</div>
+				<div id="materialPropertiesMenu" class="submenu" style="text-align: left;">
+					<div class="submenu_item">
+						<label for="colorpick_objectColor">Object Color:</label>
+						<input type='color' id="colorpick_objectColor"  class="colorpicker" value="#FF0010">
+					</div>
+					<br>
+					<div class="submenu_item">
+						<label for="kaSlider">k<sub>a</sub>:</label>
+						<input type="range" class="custom_slider" id="kaSlider" min="0" max="1.0" value="0.1" step="0.01">
+						<input type="text" class="custom_text_entry" id="kaValue" value="0.1">
+					</div>
+					<div class="submenu_item">
+						<label for="kdSlider">k<sub>d</sub>:</label>
+						<input type="range" class="custom_slider" id="kdSlider" min="0" max="1.0" value="0.8" step="0.01">
+						<input type="text" class="custom_text_entry" id="kdValue" value="0.8">
+					</div>
+					<div class="submenu_item">
+						<label for="ksSlider">k<sub>s</sub>:</label>
+						<input type="range" class="custom_slider" id="ksSlider" min="0" max="1.0" value="0.1" step="0.01">
+						<input type="text" class="custom_text_entry" id="ksValue" value="0.1">
+					</div>
+					<br>
+					<div class="submenu_item">
+						<button id="unitize_button">Unitize Coefficients</button>
+					</div>
+					<br>
+					<div class="submenu_item">
+						<label for="nsSlider">Shininess Exponent (n):</label>
+						<input type="range" class="custom_slider" id="nsSlider" min="1" max="100" value="10" step="0.5">
+						<input type="text" class="custom_text_entry" id="nsValue" value="10">
+					</div>
+				</div>
+				
+				<div id="objectSelectionMenu" class="submenu_label" style="text-align: left;">
+					<label for="objectDropdown">Reference Model: </label>
+					<select id="objectDropdown">
+						<option value="sphere">Sphere</option>
+						<option value="box">Cube</option>
+						<option value="cylinder">Cylinder</option>
+						<option value="cone">Cone</option>
+						<option value="octahedron">Octahedron</option>
+						<option value="dodecahedron">Dodecahedron</option>
+						<option value="icosahedron">Icosahedron</option>
+					</select>					
+				</div>
+
+				<div id="customShaderToggle" class="submenu_label" style="text-align: left;">
+					Custom Shader:
+					<label class="switch">
+						<input type="checkbox" id="diagramModeToggle">
+						<span class="slider round"></span>
+					</label>
+				</div>
+
+				<div id="customShaderContainer" class="hidden">
+					<div id="customShaderMenuLabel" class="submenu_label" style="text-align: left;">
+						Material Shader
+					</div>
+					<div id="customShaderMenu" class="submenu" style="text-align: left;">
+							<textarea id="customShaderTextbox" class="shadertext">
+void main() {
+	gl_FragColor = vec4(0.0,0.0,0.0,1.0);
+}</textarea>
+
+						<button id="shaderUpdateButton">
+							Update Shader
+						</button>
+					</div>
+				</div>
+            </div>
+        </div>
+        
+
+
+
+        <script type="importmap">
+			{
+			  "imports": {
+				"three": "https://unpkg.com/three@0.156.1/build/three.module.js",
+				"three/addons/": "https://unpkg.com/three@0.156.1/examples/jsm/"
+			  }
+			}
+		  </script>
+		</script>
+		<script type="module" src="main.js"></script>
+    </body>    
+</html>
