@@ -8,7 +8,7 @@ import * as FILE from './file.js'
 const scene = new THREE.Scene();
 
 const origin = new THREE.Vector3(0,0,0);
-const cameraFocus = new THREE.Vector3(0.5,0.5,0.5);
+const cameraFocus = new THREE.Vector3(0,1.0,0);
 scene.background = new THREE.Color(0x80D0FF);
 
 // Need multiple cameras for diagram view
