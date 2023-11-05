@@ -11,7 +11,6 @@ const origin = new THREE.Vector3(0,0,0);
 const cameraFocus = new THREE.Vector3(0,1.0,0);
 scene.background = new THREE.Color(0x80D0FF);
 
-// Need multiple cameras for diagram view
 const camera = new THREE.PerspectiveCamera( 75, 1.5, 0.1, 1000 );
 
 const renderer = new THREE.WebGLRenderer();
@@ -21,9 +20,11 @@ renderer.setSize( canvasWidth, Math.floor(canvasWidth / 1.5) );
 const render_element = document.getElementById("renderCanvas");
 render_element.appendChild( renderer.domElement );
 
-camera.position.set(2.5, 2.5, 2.5);
+camera.position.set(3, 3, 3);
+camera.lookAt(0.0,1.0,0.0);
 const controls = new OrbitControls( camera, renderer.domElement );
 controls.target = cameraFocus;
+controls.update();
 
 // Set up important variables
 var lightDirectionTheta = document.getElementById("lightDirectionThetaSlider").value;
@@ -97,6 +98,10 @@ fragShaderPrefixText += "uniform float k_a\;\n";
 fragShaderPrefixText += "uniform float k_d\;\n";
 fragShaderPrefixText += "uniform float k_s\;\n";
 fragShaderPrefixText += "uniform float n_s\;\n";
+fragShaderPrefixText += "\n";
+fragShaderPrefixText += "varying vec3 fPosition\;\n";
+fragShaderPrefixText += "varying vec3 fNormal\;\n";
+fragShaderPrefixText += "varying vec3 fCameraPos\;\n";
 fragShaderPrefixText += "\n";
 
 // Create Shader Material
