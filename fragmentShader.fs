@@ -26,9 +26,9 @@ void main() {
       r_dot_v = 0.0;
    }
 
-   vec4 ambient_comp = k_a * vec4(objColor, 1.0);
-   vec4 diffuse_comp = k_d * n_dot_l * vec4(objColor, 1.0);
-   vec4 specular_comp = k_s * pow(r_dot_v, n_s) * vec4(lightColor, 1.0);
+   vec4 ambient_comp = vec4(k_a * objColor, 1.0);
+   vec4 diffuse_comp = vec4(k_d * n_dot_l * objColor, 1.0);
+   vec4 specular_comp = vec4(k_s * pow(r_dot_v, n_s) * lightColor, 1.0);
 
    gl_FragColor =  ambient_comp + diffuse_comp + specular_comp; 
 }

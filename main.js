@@ -122,7 +122,7 @@ const customMaterial = new THREE.ShaderMaterial( {
 												cart_light_coords.pos_y,
 												cart_light_coords.pos_z) },
 	},
-
+	transparent: true,
 	vertexShader: vertexShaderText,
 	fragmentShader: defaultFragmentShaderText
 } );
@@ -311,7 +311,7 @@ function updateShader(custom = false){
 													cart_light_coords.pos_y,
 													cart_light_coords.pos_z) },
 		},
-	
+		transparent: true,
 		vertexShader: vertexShaderText,
 		fragmentShader: fragShader
 	
